@@ -9,8 +9,11 @@ import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.StringContains.containsString;
-
+/**
+ * 联系写发送message
+ */
 public class Meaasge {
+
 
 public Response send(String data){
     //  useRelaxedHTTPSValidation(); 走代理被https拦截，增加这个
@@ -26,7 +29,14 @@ public Response send(String data){
              .log().all().extract().response();
 }
 
-public Response send(String to, String msg,Integer agentId){
+    /**
+     *组装数据，调用api访问请求
+     * @param to
+     * @param msg
+     * @param agentId
+     * @return
+     */
+    public Response send(String to, String msg,Integer agentId){
     HashMap<String,Object> data =new HashMap<String, Object>();
     data.put("to",to);
     data.put("msg",msg);
